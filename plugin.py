@@ -7,7 +7,7 @@ from requests import get
 def write_outputs(outputs: dict[str, str]):
     output_file = open(getenv("DRONE_OUTPUT"), "a")
 
-    for k, v in outputs:
+    for k, v in outputs.items():
         output_file.write(f"{k}={v}\n")
 
     output_file.close()
