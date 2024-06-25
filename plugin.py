@@ -18,7 +18,7 @@ def main(url: str):
 
     resp.raise_for_status()
 
-    return resp.text
+    return resp.status_code
 
 
 if __name__ == "__main__":
