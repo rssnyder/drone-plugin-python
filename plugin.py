@@ -35,7 +35,7 @@ def check_env(variable: str, default: str = None):
     """
 
     value = getenv(variable, default)
-    if not value:
+    if value == None:
         # if we are missing a PLUGIN_ var, ask the user for the expected setting
         stripped_variable = variable if "PLUGIN_" not in variable else variable[7:]
         print(f"{stripped_variable} required")
