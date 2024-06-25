@@ -13,21 +13,19 @@ def write_outputs(outputs: dict[str, str]):
     output_file.close()
 
 
-def main(url: str):
-    resp = get(url)
-
-    resp.raise_for_status()
-
-    return resp.status_code
-
-
-if __name__ == "__main__":
+def main():
     url = getenv("PLUGIN_URL")
 
     if not url:
         print("URL required")
         exit(1)
 
-    resp = main(url)
+    resp = get(url)
 
-    write_outputs({"URL": url, "RESPONSE": resp})
+    resp.raise_for_status()
+
+    write_outputs({"URL": url, "RESPONSE": resp.status_code})
+
+
+if __name__ == "__main__":
+    main()
